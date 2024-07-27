@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductAPI from "./FetchingAPI";
 import Pagination from "../Components/Pagination";
+import { off } from "process";
 
 const productAPI = new ProductAPI("https://dummyjson.com/products");
 
@@ -19,15 +20,20 @@ function Fetching() {
       console.log(error);
     }
   }
+
   async function getProduct(id) {
     try {
       const result = await productAPI.getProduct(id);
-      setProductDetails(result);
+      setProductDetails((prevDetails) => ({
+        ...prevDetails,
+        [id]: result,
+      }));
       console.log(result);
     } catch (error) {
       console.log(error);
     }
   }
+
   const handleScroll = (e) => {
     const scrollHeight = e.target.documentElement.scrollHeight;
     const currentHeight =

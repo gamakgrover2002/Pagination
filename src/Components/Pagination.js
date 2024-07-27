@@ -8,7 +8,7 @@ function Pagination({ page, totalPages, onPageChange }) {
   return (
     <div className="pagination">
       <button
-        className="side-btn"
+        className="side-button"
         onClick={() => onPageChange(page - 1)}
         disabled={page === 1}
       >
@@ -18,13 +18,13 @@ function Pagination({ page, totalPages, onPageChange }) {
         <button
           key={num}
           onClick={() => onPageChange(num)}
-          className={num === page ? "active" : "btn"}
+          className={num === page ? "active" : "button"}
         >
           {num}
         </button>
       ))}
       <button
-        className="side-btn"
+        className="side-button"
         onClick={() => onPageChange(page + 1)}
         disabled={page === totalPages}
       >
